@@ -1,0 +1,55 @@
+{
+  "policy_id": "SYNTHETIC-DEPOSIT-CLAIMS",
+  "version": "0.1",
+  "notice": "Illustrative synthetic rules for software testing only. Not an actual bank policy or RBI checklist.",
+  "claim_types": {
+    "nominee": {
+      "required_documents": [
+        "claim_form",
+        "death_certificate",
+        "nominee_kyc"
+      ]
+    },
+    "no_nominee_uncontested": {
+      "required_documents": [
+        "claim_form",
+        "death_certificate",
+        "legal_heir_declaration",
+        "indemnity_bond"
+      ]
+    }
+  },
+  "comparison_fields": [
+    "deceased_name",
+    "date_of_death"
+  ],
+  "minimum_ocr_confidence": 0.85,
+  "required_fields_by_document": {
+    "claim_form": [
+      "deceased_name",
+      "date_of_death"
+    ],
+    "death_certificate": [
+      "deceased_name",
+      "date_of_death"
+    ],
+    "nominee_kyc": [
+      "claimant_name"
+    ],
+    "legal_heir_declaration": [
+      "declarant_name",
+      "declaration_present"
+    ],
+    "indemnity_bond": [
+      "indemnifier_name",
+      "signature_present"
+    ]
+  },
+  "recognised_document_types": [
+    "claim_form",
+    "death_certificate",
+    "nominee_kyc",
+    "legal_heir_declaration",
+    "indemnity_bond"
+  ]
+}

@@ -1,0 +1,13 @@
+flowchart TD
+    A[Bank employee selects synthetic claim category and uploads documents] --> B[API / input validation - proposed]
+    B --> C[Secure file storage - proposed]
+    C --> D[OCR and page-level text evidence - proposed]
+    D --> E[LLM structured extraction with schema validation - proposed]
+    E --> F[Deterministic rules engine - IMPLEMENTED]
+    P[Approved versioned bank policy - proposed] --> R[Policy retrieval / RAG - proposed]
+    R --> F
+    F --> G[Verification report: missing items, fields, mismatches]
+    G --> H[Human review and existing bank approval process - proposed]
+    F --> DB[(Claim metadata and audit store - proposed)]
+    G --> DB
+    H --> DB

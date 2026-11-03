@@ -1,0 +1,106 @@
+{
+  "dataset": "synthetic only",
+  "case_count": 14,
+  "expected_status_matches": 14,
+  "case_results": [
+    {
+      "claim_id": "SYN-001",
+      "description": "Normal nominee claim; all required documents and matching fields.",
+      "expected_status": "CHECKS_PASSED",
+      "actual_status": "CHECKS_PASSED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-002",
+      "description": "Nominee claim missing nominee KYC.",
+      "expected_status": "INCOMPLETE",
+      "actual_status": "INCOMPLETE",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-003",
+      "description": "Duplicate death certificate uploaded; nominee KYC still missing.",
+      "expected_status": "INCOMPLETE",
+      "actual_status": "INCOMPLETE",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-004",
+      "description": "All documents present but deceased name differs across documents.",
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-005",
+      "description": "All documents present but date of death differs.",
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-006",
+      "description": "All documents present but one extracted field has low OCR confidence.",
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-007",
+      "description": "Normal uncontested no-nominee claim with illustrative required documents.",
+      "expected_status": "CHECKS_PASSED",
+      "actual_status": "CHECKS_PASSED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-008",
+      "description": "No-nominee claim missing legal-heir declaration.",
+      "expected_status": "INCOMPLETE",
+      "actual_status": "INCOMPLETE",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-009",
+      "description": "Unsupported claim category; system must abstain from applying a checklist.",
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-010",
+      "description": "All document types present but death-certificate date is unreadable/not extracted.",
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-011",
+      "description": "Unknown document type alongside otherwise complete nominee claim.",
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-012",
+      "description": "Confidence metadata outside valid 0-to-1 range.",
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-013",
+      "description": "Required no-nominee documents are present but required fields are empty.",
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "match": true
+    },
+    {
+      "claim_id": "SYN-014",
+      "description": "Equivalent date formats should normalise to the same date.",
+      "expected_status": "CHECKS_PASSED",
+      "actual_status": "CHECKS_PASSED",
+      "match": true
+    }
+  ],
+  "note": "This evaluates expected status matching on hand-authored synthetic cases; it is not a measure of real-world accuracy."
+}

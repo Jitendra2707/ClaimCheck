@@ -1,0 +1,430 @@
+[
+  {
+    "claim_id": "SYN-001",
+    "description": "Normal nominee claim; all required documents and matching fields.",
+    "claim_type": "nominee",
+    "expected_status": "CHECKS_PASSED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        },
+        "field_confidence": {
+          "deceased_name": 0.99,
+          "date_of_death": 0.99
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        },
+        "field_confidence": {
+          "deceased_name": 0.99,
+          "date_of_death": 0.99
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "nominee_kyc",
+        "fields": {
+          "claimant_name": "Nisha Mehta"
+        },
+        "field_confidence": {
+          "claimant_name": 0.98
+        }
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-002",
+    "description": "Nominee claim missing nominee KYC.",
+    "claim_type": "nominee",
+    "expected_status": "INCOMPLETE",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-003",
+    "description": "Duplicate death certificate uploaded; nominee KYC still missing.",
+    "claim_type": "nominee",
+    "expected_status": "INCOMPLETE",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {}
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {}
+      },
+      {
+        "document_id": "D2-COPY",
+        "document_type": "death_certificate",
+        "fields": {}
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-004",
+    "description": "All documents present but deceased name differs across documents.",
+    "claim_type": "nominee",
+    "expected_status": "REVIEW_REQUIRED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Arav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "nominee_kyc",
+        "fields": {
+          "claimant_name": "Nisha Mehta"
+        }
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-005",
+    "description": "All documents present but date of death differs.",
+    "claim_type": "nominee",
+    "expected_status": "REVIEW_REQUIRED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-11"
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "nominee_kyc",
+        "fields": {
+          "claimant_name": "Nisha Mehta"
+        }
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-006",
+    "description": "All documents present but one extracted field has low OCR confidence.",
+    "claim_type": "nominee",
+    "expected_status": "REVIEW_REQUIRED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        },
+        "field_confidence": {
+          "deceased_name": 0.99,
+          "date_of_death": 0.99
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        },
+        "field_confidence": {
+          "deceased_name": 0.99,
+          "date_of_death": 0.61
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "nominee_kyc",
+        "fields": {
+          "claimant_name": "Nisha Mehta"
+        },
+        "field_confidence": {
+          "claimant_name": 0.99
+        }
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-007",
+    "description": "Normal uncontested no-nominee claim with illustrative required documents.",
+    "claim_type": "no_nominee_uncontested",
+    "expected_status": "CHECKS_PASSED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Kabir Shah",
+          "date_of_death": "2026-09-01"
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Kabir Shah",
+          "date_of_death": "2026-09-01"
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "legal_heir_declaration",
+        "fields": {
+          "declarant_name": "Mira Shah",
+          "declaration_present": true
+        }
+      },
+      {
+        "document_id": "D4",
+        "document_type": "indemnity_bond",
+        "fields": {
+          "indemnifier_name": "Mira Shah",
+          "signature_present": true
+        }
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-008",
+    "description": "No-nominee claim missing legal-heir declaration.",
+    "claim_type": "no_nominee_uncontested",
+    "expected_status": "INCOMPLETE",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {}
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {}
+      },
+      {
+        "document_id": "D4",
+        "document_type": "indemnity_bond",
+        "fields": {}
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-009",
+    "description": "Unsupported claim category; system must abstain from applying a checklist.",
+    "claim_type": "disputed_will_claim",
+    "expected_status": "REVIEW_REQUIRED",
+    "documents": []
+  },
+  {
+    "claim_id": "SYN-010",
+    "description": "All document types present but death-certificate date is unreadable/not extracted.",
+    "claim_type": "nominee",
+    "expected_status": "REVIEW_REQUIRED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Aarav Mehta"
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "nominee_kyc",
+        "fields": {
+          "claimant_name": "Nisha Mehta"
+        }
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-011",
+    "description": "Unknown document type alongside otherwise complete nominee claim.",
+    "claim_type": "nominee",
+    "expected_status": "REVIEW_REQUIRED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "nominee_kyc",
+        "fields": {
+          "claimant_name": "Nisha Mehta"
+        }
+      },
+      {
+        "document_id": "D4",
+        "document_type": "mystery_document",
+        "fields": {}
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-012",
+    "description": "Confidence metadata outside valid 0-to-1 range.",
+    "claim_type": "nominee",
+    "expected_status": "REVIEW_REQUIRED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        },
+        "field_confidence": {
+          "deceased_name": 2.0
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "nominee_kyc",
+        "fields": {
+          "claimant_name": "Nisha Mehta"
+        }
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-013",
+    "description": "Required no-nominee documents are present but required fields are empty.",
+    "claim_type": "no_nominee_uncontested",
+    "expected_status": "REVIEW_REQUIRED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Kabir Shah",
+          "date_of_death": "2026-09-01"
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Kabir Shah",
+          "date_of_death": "2026-09-01"
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "legal_heir_declaration",
+        "fields": {}
+      },
+      {
+        "document_id": "D4",
+        "document_type": "indemnity_bond",
+        "fields": {}
+      }
+    ]
+  },
+  {
+    "claim_id": "SYN-014",
+    "description": "Equivalent date formats should normalise to the same date.",
+    "claim_type": "nominee",
+    "expected_status": "CHECKS_PASSED",
+    "documents": [
+      {
+        "document_id": "D1",
+        "document_type": "claim_form",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "2026-10-10"
+        }
+      },
+      {
+        "document_id": "D2",
+        "document_type": "death_certificate",
+        "fields": {
+          "deceased_name": "Aarav Mehta",
+          "date_of_death": "10/10/2026"
+        }
+      },
+      {
+        "document_id": "D3",
+        "document_type": "nominee_kyc",
+        "fields": {
+          "claimant_name": "Nisha Mehta"
+        }
+      }
+    ]
+  }
+]
